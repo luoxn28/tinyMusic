@@ -1,0 +1,21 @@
+
+# gradlew
+.gradle/
+gradle/
+gradlew.bat
+gradlew
+gradle.properties
+
+# idea
+.idea/
+*.iml
+out/
+
+# build
+build
+androidTest
+test
+
+local.properties
+
+
