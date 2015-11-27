@@ -1,27 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent" >
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_back" >
 
-    <Button
-        android:id="@+id/play"
-        android:layout_width="0dp"
+    <!-- 显示歌曲列表 -->
+    <ListView
+        android:id="@+id/list_music"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="paly" />
+        android:layout_above="@+id/handle_btnlayout" >
 
-    <Button
-        android:id="@+id/pause"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Pause"/>
+    </ListView>
 
-    <Button
-        android:id="@+id/stop"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Stop" />
+    <!-- 在整个布局的最底部 -->
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/handle_btnlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/album_music"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/album_music" />
+
+        <!-- 显示歌曲信息 -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+
+            <!-- 歌曲名称 -->
+            <TextView
+                android:id="@+id/name_song"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="秦时明月"/>
+
+            <!-- 歌曲信息 -->
+            <TextView
+                android:id="@+id/time_song"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_song"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="时长: 2:30"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/previous_music"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/previous_music" />
+
+        <Button
+            android:id="@+id/play_music"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@+id/previous_music"
+            android:background="@drawable/play_music" />
+
+        <Button
+            android:id="@+id/next_music"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@+id/play_music"
+            android:background="@drawable/next_music" />
+
+        <Button
+            android:id="@+id/menu_music"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@+id/next_music"
+            android:background="@drawable/menu_mesic" />
+
+    </LinearLayout>
+
+</RelativeLayout>

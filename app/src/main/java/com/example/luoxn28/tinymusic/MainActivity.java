@@ -17,10 +17,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     // 用于输出调试信息，表明当前在那个活动中
     private static final String TAG = "MainActivity";
 
-    private Button play;
-    private Button pause;
-    private Button stop;
+    private Button play_music;
+    //private Button pause;
+    //private Button stop;
 
+    private boolean isSinging = false;
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
@@ -28,12 +29,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        play = (Button) findViewById(R.id.play);
-        pause = (Button) findViewById(R.id.pause);
-        stop = (Button) findViewById(R.id.stop);
-        play.setOnClickListener(this);
-        pause.setOnClickListener(this);
-        stop.setOnClickListener(this);
+        play_music = (Button) findViewById(R.id.play_music);
+        play_music.setOnClickListener(this);
 
         initMediaPlayer(); // 初始化播放
     }
@@ -57,12 +54,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.play:
-                if (!mediaPlayer.isPlaying()) {
-                    mediaPlayer.start(); // 开始播放
+            case R.id.play_music:
+                if (!isSinging) {
+                    isSinging = true;
+                    mediaPlayer.start(); // 开始或继续播放
+                    play_music.setBackgroundResource(R.drawable.pause_music); // 变换背景图片
+                }
+                else {
+                    isSinging = false;
+                    mediaPlayer.pause(); // 暂停播放
+                    play_music.setBackgroundResource(R.drawable.play_music);
                 }
                 break;
-
+            /*
             case R.id.pause:
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause(); // 暂停播放
@@ -75,7 +79,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     initMediaPlayer();
                 }
                 break;
-
+            */
             default:
                 break;
         }
